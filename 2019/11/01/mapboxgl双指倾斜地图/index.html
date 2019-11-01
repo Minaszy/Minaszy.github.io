@@ -81,13 +81,15 @@
 
 <meta name="description" content="项目环境移动端采用：ionic+angular混合开发；地图框架采用：mapbox-gl 遇到问题在web端，mapbox-gl的地图可以通过鼠标右键操作倾斜、旋转，但是在移动端需要通过触摸事件来操作，mapbox-gl在TouchZoomRotateHandler类中只加入了触摸平移、缩放、旋转事件，并没有地图倾斜事件；因此APP上的地图可以单指&#x2F;双指拖动，双指缩放和旋转，但是不能像web端一样">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mapboxgl+ionic混合开发双指滑动倾斜地图效果">
-<meta property="og:url" content="https:&#x2F;&#x2F;minaszy.github.io&#x2F;2019&#x2F;11&#x2F;01&#x2F;20191101&#x2F;index.html">
-<meta property="og:site_name" content="月亮与六便士">
+<meta property="og:title" content="mapboxgl双指倾斜地图">
+<meta property="og:url" content="http:&#x2F;&#x2F;localhost:4000&#x2F;2019&#x2F;11&#x2F;01&#x2F;mapboxgl%E5%8F%8C%E6%8C%87%E5%80%BE%E6%96%9C%E5%9C%B0%E5%9B%BE&#x2F;index.html">
+<meta property="og:site_name" content="Minaszy&#39;s Blog">
 <meta property="og:description" content="项目环境移动端采用：ionic+angular混合开发；地图框架采用：mapbox-gl 遇到问题在web端，mapbox-gl的地图可以通过鼠标右键操作倾斜、旋转，但是在移动端需要通过触摸事件来操作，mapbox-gl在TouchZoomRotateHandler类中只加入了触摸平移、缩放、旋转事件，并没有地图倾斜事件；因此APP上的地图可以单指&#x2F;双指拖动，双指缩放和旋转，但是不能像web端一样">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-01T08:29:08.451Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;localhost:4000&#x2F;2019&#x2F;11&#x2F;01&#x2F;mapboxgl%E5%8F%8C%E6%8C%87%E5%80%BE%E6%96%9C%E5%9C%B0%E5%9B%BE&#x2F;001.jpg">
+<meta property="og:updated_time" content="2019-11-01T11:35:48.000Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;localhost:4000&#x2F;2019&#x2F;11&#x2F;01&#x2F;mapboxgl%E5%8F%8C%E6%8C%87%E5%80%BE%E6%96%9C%E5%9C%B0%E5%9B%BE&#x2F;001.jpg">
 
 
 
@@ -117,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://minaszy.github.io/2019/11/01/20191101/"/>
+  <link rel="canonical" href="http://localhost:4000/2019/11/01/mapboxgl双指倾斜地图/"/>
 
 
 
 
 
-  <title>mapboxgl+ionic混合开发双指滑动倾斜地图效果 | 月亮与六便士</title>
+  <title>mapboxgl双指倾斜地图 | Minaszy's Blog</title>
   
 
 
@@ -153,7 +155,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">月亮与六便士</span>
+        <span class="site-title">Minaszy's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -179,7 +181,7 @@
       
         
         <li class="menu-item menu-item-主页">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -189,7 +191,7 @@
       
         
         <li class="menu-item menu-item-标签">
-          <a href="/tags/%20" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -230,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://minaszy.github.io/2019/11/01/20191101/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2019/11/01/mapboxgl%E5%8F%8C%E6%8C%87%E5%80%BE%E6%96%9C%E5%9C%B0%E5%9B%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Minaszy">
@@ -239,7 +241,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="月亮与六便士">
+      <meta itemprop="name" content="Minaszy's Blog">
     </span>
 
     
@@ -247,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">mapboxgl+ionic混合开发双指滑动倾斜地图效果</h1>
+          <h1 class="post-title" itemprop="name headline">mapboxgl双指倾斜地图</h1>
         
 
         <div class="post-meta">
@@ -259,7 +261,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-01T16:07:54+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-01T19:35:00+08:00">
                 2019-11-01
               </time>
             
@@ -301,7 +303,7 @@
 <h2 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h2><p>在web端，mapbox-gl的地图可以通过鼠标右键操作倾斜、旋转，但是在移动端需要通过触摸事件来操作，mapbox-gl在TouchZoomRotateHandler类中只加入了触摸平移、缩放、旋转事件，并没有地图倾斜事件；因此APP上的地图可以单指/双指拖动，双指缩放和旋转，但是不能像web端一样倾斜；</p>
 <h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p>修改mapbox-gl源码中的TouchZoomRotateHandler类，增加双指滑动倾斜地图效果。<br>监听touchstart时的地图pitch值和双指起始位置，touchmove时判断双指是否平行滑动，根据滑动的长度计算地图当前的倾斜度即pitch的值，调用设置地图倾斜度的方法setPitch实现想要的效果。<br>关键实现代码：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ const Y0 = p0.y - this._startP0.y; //计算第一个手指滑动距离</span><br><span class="line">$ const Y1 = p1.y - this._startP1.y; //计算第二个手指滑动距离</span><br><span class="line">$ const b = (Y0 &lt;= 0 &amp;&amp; Y1 &lt;= 0 || Y0 &gt;= 0 &amp;&amp; Y1 &gt;= 0); //判断双指是否平行滑动</span><br><span class="line">$ <span class="keyword">if</span> (b) &#123;</span><br><span class="line">$     const diff = (Y0 + Y1) / 2 * 0.5;</span><br><span class="line">$     this._map.setPitch(this._startPitch + diff); //设置地图倾斜度</span><br><span class="line">$ &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="成果展示"><a href="#成果展示" class="headerlink" title="成果展示"></a>成果展示</h2><p>github:<a href="https://github.com/Minaszy/mapbox-gl-js.git" target="_blank" rel="noopener">https://github.com/Minaszy/mapbox-gl-js.git</a></p>
+<h2 id="成果展示"><a href="#成果展示" class="headerlink" title="成果展示"></a>成果展示</h2><p>github:<a href="https://github.com/Minaszy/mapbox-gl-js.git" target="_blank" rel="noopener">https://github.com/Minaszy/mapbox-gl-js.git</a><br><img src="//localhost:4000/2019/11/01/mapboxgl%E5%8F%8C%E6%8C%87%E5%80%BE%E6%96%9C%E5%9C%B0%E5%9B%BE/001.jpg" width="50%"></p>
 
       
     </div>
@@ -326,8 +328,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/01/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/11/01/test/" rel="next" title="test">
+                <i class="fa fa-chevron-left"></i> test
               </a>
             
           </div>
@@ -335,10 +337,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/01/test/" rel="prev" title="test">
-                test <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -423,6 +421,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
             
 
           </nav>

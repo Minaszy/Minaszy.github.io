@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="ionic 3D arcgis," />
+  <meta name="keywords" content="arcgis api," />
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="概述主要使用esri-loader这个插件来加载arcgis api的模块。直接安装使用esri-loader，会默认从CDN上最新版本的arcgis api加载需要的模块。本文将arcgis api部署到本地使用,api大概60多M，这种方式会使app包变大。具体的使用方法可以参考官方esri-loader使用介绍。 搭建ionic4环境先给个官网地址，后面再写一篇博客。官方环境搭建 安装esr">
-<meta name="keywords" content="ionic 3D arcgis">
+<meta name="keywords" content="arcgis api">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ionic4集成arcgis api for js 4.x">
 <meta property="og:url" content="https:&#x2F;&#x2F;minaszy.github.io&#x2F;2019&#x2F;11&#x2F;09&#x2F;ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x&#x2F;index.html">
@@ -90,7 +90,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;minaszy.github.io&#x2F;2019&#x2F;11&#x2F;09&#x2F;ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x&#x2F;api.jpg">
 <meta property="og:image" content="https:&#x2F;&#x2F;minaszy.github.io&#x2F;2019&#x2F;11&#x2F;09&#x2F;ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x&#x2F;earth.jpg">
 <meta property="og:image" content="https:&#x2F;&#x2F;minaszy.github.io&#x2F;2019&#x2F;11&#x2F;09&#x2F;ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x&#x2F;3d.jpg">
-<meta property="og:updated_time" content="2019-11-09T07:48:17.013Z">
+<meta property="og:updated_time" content="2019-11-09T09:22:55.004Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;minaszy.github.io&#x2F;2019&#x2F;11&#x2F;09&#x2F;ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x&#x2F;api.jpg">
 
@@ -329,9 +329,7 @@
 <p>将下载好的arcgis api中的4.x文件夹放到项目assets/lib目录下，修改arcgis api的init.js和dojo.js,在这两个文件里搜索[HOSTNAME_AND_PATH_TO_JSAPI]，将baseUrl的值替换为:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(location.protocol === <span class="string">'file:'</span> ? <span class="string">'http:'</span> : location.protocol) + <span class="string">'//'</span> + location.host + <span class="string">"/assets/lib/4.11/dojo"</span></span><br></pre></td></tr></table></figure>
 <p>然后通过setDefaultOptions或者loadModules时指定本地api服务url。</p>
-<h2 id="成果展示及代码分享"><a href="#成果展示及代码分享" class="headerlink" title="成果展示及代码分享"></a>成果展示及代码分享</h2><img src="//minaszy.github.io/2019/11/09/ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x/earth.jpg" width="20%">
-<img src="//minaszy.github.io/2019/11/09/ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x/3d.jpg" width="20%">
-
+<h2 id="成果展示及代码分享"><a href="#成果展示及代码分享" class="headerlink" title="成果展示及代码分享"></a>成果展示及代码分享</h2><p>demo项目代码: <a href="https://github.com/Minaszy/ionicWithArcApi4x" target="_blank" rel="noopener">https://github.com/Minaszy/ionicWithArcApi4x</a><br><img src="//minaszy.github.io/2019/11/09/ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x/earth.jpg" width="20%"><br><img src="//minaszy.github.io/2019/11/09/ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x/3d.jpg" width="20%"></p>
 <h2 id="其他框架"><a href="#其他框架" class="headerlink" title="其他框架"></a>其他框架</h2><p>arcgis api for js与angular、ember、react、vue一起使用的方法参见<a href="https://developers.arcgis.com/javascript/latest/guide/using-frameworks/" target="_blank" rel="noopener">官网介绍</a></p>
 <h2 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h2><p>是否要安装npm install @types/arcgis-js-api –save，待述。</p>
 
@@ -351,7 +349,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ionic-3D-arcgis/" rel="tag"># ionic 3D arcgis</a>
+            <a href="/tags/arcgis-api/" rel="tag"># arcgis api</a>
           
         </div>
       
@@ -466,7 +464,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

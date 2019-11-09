@@ -238,6 +238,135 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://minaszy.github.io/2019/11/09/ionic4%E9%9B%86%E6%88%90cesium/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minaszy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Minaszy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/09/ionic4%E9%9B%86%E6%88%90cesium/" itemprop="url">ionic4集成cesium</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-09T11:03:43+08:00">
+                2019-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="搭建ionic4环境"><a href="#搭建ionic4环境" class="headerlink" title="搭建ionic4环境"></a>搭建ionic4环境</h2><p>先给个官网地址，后面再写一篇博客。<a href="https://ionicframework.com/docs/installation/environment" target="_blank" rel="noopener">官方环境搭建</a></p>
+<h2 id="安装cesium"><a href="#安装cesium" class="headerlink" title="安装cesium"></a>安装cesium</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save cesium</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置cesium"><a href="#配置cesium" class="headerlink" title="配置cesium"></a>配置cesium</h2><p>我们需要将cesium的js、css及其他必要的附件添加到项目里，angular的项目可以通过angular.json这个文件来配置第三方库。主要有四个地方需要配置：<br>1、配置angular.json里的assets;<br>2、配置angular.json里的styles;<br>3、配置angular.json里的scripts;</p>
+<img src="/2019/11/09/ionic4%E9%9B%86%E6%88%90cesium/config.jpg" class title="mapbox-gl官网图标和字体的说明">
+<p>4、配置main.ts，添加 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window[<span class="string">'CESIUM_BASE_URL'</span>] = <span class="string">'/assets/cesium/'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="声明使用cesium-创建地球"><a href="#声明使用cesium-创建地球" class="headerlink" title="声明使用cesium,创建地球"></a>声明使用cesium,创建地球</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Component, ViewChild, ElementRef, Directive, OnInit &#125; from <span class="string">'@angular/core'</span>;</span><br><span class="line"><span class="built_in">declare</span> var Cesium;</span><br><span class="line">@Component(&#123;</span><br><span class="line">  selector: <span class="string">'app-home'</span>,</span><br><span class="line">  templateUrl: <span class="string">'home.page.html'</span>,</span><br><span class="line">  styleUrls: [<span class="string">'home.page.scss'</span>],</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">export</span> class HomePage implements OnInit &#123;</span><br><span class="line">  @ViewChild(<span class="string">'map'</span>, null) mapContainer: ElementRef;</span><br><span class="line">  <span class="function"><span class="title">constructor</span></span>() &#123; &#125;</span><br><span class="line">  <span class="function"><span class="title">ngOnInit</span></span>() &#123;</span><br><span class="line">    const viewer = new Cesium.Viewer(this.mapContainer.nativeElement);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="成果展示及代码分享"><a href="#成果展示及代码分享" class="headerlink" title="成果展示及代码分享"></a>成果展示及代码分享</h2><p>demo项目代码: <a href="https://github.com/Minaszy/ionicWithCesium" target="_blank" rel="noopener">https://github.com/Minaszy/ionicWithCesium</a><br><img src="//minaszy.github.io/2019/11/09/ionic4%E9%9B%86%E6%88%90cesium/ce.jpg" width="30%"></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>本文参考：<br><a href="https://cesium.com/blog/2018/03/12/cesium-and-angular/" target="_blank" rel="noopener">Cesium and Angular</a><br><a href="https://www.npmjs.com/package/angular-cesium" target="_blank" rel="noopener">angular-cesium</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://minaszy.github.io/2019/11/09/ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -326,9 +455,7 @@
 <p>将下载好的arcgis api中的4.x文件夹放到项目assets/lib目录下，修改arcgis api的init.js和dojo.js,在这两个文件里搜索[HOSTNAME_AND_PATH_TO_JSAPI]，将baseUrl的值替换为:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(location.protocol === <span class="string">'file:'</span> ? <span class="string">'http:'</span> : location.protocol) + <span class="string">'//'</span> + location.host + <span class="string">"/assets/lib/4.11/dojo"</span></span><br></pre></td></tr></table></figure>
 <p>然后通过setDefaultOptions或者loadModules时指定本地api服务url。</p>
-<h2 id="成果展示及代码分享"><a href="#成果展示及代码分享" class="headerlink" title="成果展示及代码分享"></a>成果展示及代码分享</h2><img src="//minaszy.github.io/2019/11/09/ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x/earth.jpg" width="20%">
-<img src="//minaszy.github.io/2019/11/09/ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x/3d.jpg" width="20%">
-
+<h2 id="成果展示及代码分享"><a href="#成果展示及代码分享" class="headerlink" title="成果展示及代码分享"></a>成果展示及代码分享</h2><p>demo项目代码: <a href="https://github.com/Minaszy/ionicWithArcApi4x" target="_blank" rel="noopener">https://github.com/Minaszy/ionicWithArcApi4x</a><br><img src="//minaszy.github.io/2019/11/09/ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x/earth.jpg" width="20%"><br><img src="//minaszy.github.io/2019/11/09/ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x/3d.jpg" width="20%"></p>
 <h2 id="其他框架"><a href="#其他框架" class="headerlink" title="其他框架"></a>其他框架</h2><p>arcgis api for js与angular、ember、react、vue一起使用的方法参见<a href="https://developers.arcgis.com/javascript/latest/guide/using-frameworks/" target="_blank" rel="noopener">官网介绍</a></p>
 <h2 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h2><p>是否要安装npm install @types/arcgis-js-api –save，待述。</p>
 
@@ -461,7 +588,7 @@
 <img src="/2019/11/02/mapbox-gl%E6%9C%AC%E5%9C%B0%E5%8C%96%E5%9B%BE%E6%A0%87%E5%92%8C%E5%AD%97%E4%BD%93/sprite.png" class title="mapbox-gl官网图标和字体的说明">
 
 <p><a href="https://api.mapbox.com/fonts/v1/mapbox/DIN" target="_blank" rel="noopener">https://api.mapbox.com/fonts/v1/mapbox/DIN</a> Offc Pro Medium,Arial Unicode MS Regular/0-255.pbf</p>
-<p>前两个本地化只要把sprite.json和sprite.png下载到本地web服务器或者自制一套css sprites精灵图；字体本地化则需要使用mapbox提供的字体转换工具node-fontnik，将我们常用的tff字体文件转换成pdf格式。自制精灵图和转换tff后面单独讲，现在贴出一个本地化后的简单效果demo，包含demo里图标和字体：<br>github:<a href="https://github.com/Minaszy/mapbox-gl-offline" target="_blank" rel="noopener">https://github.com/Minaszy/mapbox-gl-offline</a></p>
+<p>前两个本地化只要把sprite.json和sprite.png下载到本地web服务器或者自制一套css sprites精灵图；字体本地化则需要使用mapbox提供的字体转换工具node-fontnik，将我们常用的tff字体文件转换成pdf格式。自制精灵图和转换tff后面单独讲，现在贴出一个本地化后的简单效果demo，包含demo里图标和字体：<br>demo项目代码: <a href="https://github.com/Minaszy/mapbox-gl-offline" target="_blank" rel="noopener">https://github.com/Minaszy/mapbox-gl-offline</a></p>
 <img src="/2019/11/02/mapbox-gl%E6%9C%AC%E5%9C%B0%E5%8C%96%E5%9B%BE%E6%A0%87%E5%92%8C%E5%AD%97%E4%BD%93/demo.jpg" class title="mapbox-gl官网图标和字体的说明">
 
           
@@ -681,7 +808,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="hide," />
+  <meta name="keywords" content="cesium," />
 
 
 
@@ -79,14 +79,19 @@
 
 
 
-<meta name="keywords" content="hide">
+<meta name="description" content="搭建ionic4环境先给个官网地址，后面再写一篇博客。官方环境搭建 安装cesium1npm install --save cesium  配置cesium我们需要将cesium的js、css及其他必要的附件添加到项目里，angular的项目可以通过angular.json这个文件来配置第三方库。主要有四个地方需要配置：1、配置angular.json里的assets;2、配置angular.js">
+<meta name="keywords" content="cesium">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ionic4集成cesium">
 <meta property="og:url" content="https:&#x2F;&#x2F;minaszy.github.io&#x2F;2019&#x2F;11&#x2F;09&#x2F;ionic4%E9%9B%86%E6%88%90cesium&#x2F;index.html">
 <meta property="og:site_name" content="Minaszy&#39;s Blog">
+<meta property="og:description" content="搭建ionic4环境先给个官网地址，后面再写一篇博客。官方环境搭建 安装cesium1npm install --save cesium  配置cesium我们需要将cesium的js、css及其他必要的附件添加到项目里，angular的项目可以通过angular.json这个文件来配置第三方库。主要有四个地方需要配置：1、配置angular.json里的assets;2、配置angular.js">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-09T07:41:43.966Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;minaszy.github.io&#x2F;2019&#x2F;11&#x2F;09&#x2F;ionic4%E9%9B%86%E6%88%90cesium&#x2F;config.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;minaszy.github.io&#x2F;2019&#x2F;11&#x2F;09&#x2F;ionic4%E9%9B%86%E6%88%90cesium&#x2F;ce.jpg">
+<meta property="og:updated_time" content="2019-11-09T09:22:58.805Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;minaszy.github.io&#x2F;2019&#x2F;11&#x2F;09&#x2F;ionic4%E9%9B%86%E6%88%90cesium&#x2F;config.jpg">
 
 
 
@@ -306,7 +311,17 @@
       
 
       
-        
+        <h2 id="搭建ionic4环境"><a href="#搭建ionic4环境" class="headerlink" title="搭建ionic4环境"></a>搭建ionic4环境</h2><p>先给个官网地址，后面再写一篇博客。<a href="https://ionicframework.com/docs/installation/environment" target="_blank" rel="noopener">官方环境搭建</a></p>
+<h2 id="安装cesium"><a href="#安装cesium" class="headerlink" title="安装cesium"></a>安装cesium</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save cesium</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置cesium"><a href="#配置cesium" class="headerlink" title="配置cesium"></a>配置cesium</h2><p>我们需要将cesium的js、css及其他必要的附件添加到项目里，angular的项目可以通过angular.json这个文件来配置第三方库。主要有四个地方需要配置：<br>1、配置angular.json里的assets;<br>2、配置angular.json里的styles;<br>3、配置angular.json里的scripts;</p>
+<img src="/2019/11/09/ionic4%E9%9B%86%E6%88%90cesium/config.jpg" class title="mapbox-gl官网图标和字体的说明">
+<p>4、配置main.ts，添加 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window[<span class="string">'CESIUM_BASE_URL'</span>] = <span class="string">'/assets/cesium/'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="声明使用cesium-创建地球"><a href="#声明使用cesium-创建地球" class="headerlink" title="声明使用cesium,创建地球"></a>声明使用cesium,创建地球</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Component, ViewChild, ElementRef, Directive, OnInit &#125; from <span class="string">'@angular/core'</span>;</span><br><span class="line"><span class="built_in">declare</span> var Cesium;</span><br><span class="line">@Component(&#123;</span><br><span class="line">  selector: <span class="string">'app-home'</span>,</span><br><span class="line">  templateUrl: <span class="string">'home.page.html'</span>,</span><br><span class="line">  styleUrls: [<span class="string">'home.page.scss'</span>],</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">export</span> class HomePage implements OnInit &#123;</span><br><span class="line">  @ViewChild(<span class="string">'map'</span>, null) mapContainer: ElementRef;</span><br><span class="line">  <span class="function"><span class="title">constructor</span></span>() &#123; &#125;</span><br><span class="line">  <span class="function"><span class="title">ngOnInit</span></span>() &#123;</span><br><span class="line">    const viewer = new Cesium.Viewer(this.mapContainer.nativeElement);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="成果展示及代码分享"><a href="#成果展示及代码分享" class="headerlink" title="成果展示及代码分享"></a>成果展示及代码分享</h2><p>demo项目代码: <a href="https://github.com/Minaszy/ionicWithCesium" target="_blank" rel="noopener">https://github.com/Minaszy/ionicWithCesium</a><br><img src="//minaszy.github.io/2019/11/09/ionic4%E9%9B%86%E6%88%90cesium/ce.jpg" width="30%"></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>本文参考：<br><a href="https://cesium.com/blog/2018/03/12/cesium-and-angular/" target="_blank" rel="noopener">Cesium and Angular</a><br><a href="https://www.npmjs.com/package/angular-cesium" target="_blank" rel="noopener">angular-cesium</a></p>
+
       
     </div>
     
@@ -323,7 +338,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hide/" rel="tag"># hide</a>
+            <a href="/tags/cesium/" rel="tag"># cesium</a>
           
         </div>
       
@@ -396,8 +411,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -425,7 +449,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -448,6 +472,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建ionic4环境"><span class="nav-number">1.</span> <span class="nav-text">搭建ionic4环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装cesium"><span class="nav-number">2.</span> <span class="nav-text">安装cesium</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置cesium"><span class="nav-number">3.</span> <span class="nav-text">配置cesium</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明使用cesium-创建地球"><span class="nav-number">4.</span> <span class="nav-text">声明使用cesium,创建地球</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成果展示及代码分享"><span class="nav-number">5.</span> <span class="nav-text">成果展示及代码分享</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

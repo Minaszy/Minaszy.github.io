@@ -81,7 +81,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Minaszy&#39;s Blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;localhost:4000&#x2F;index.html">
+<meta property="og:url" content="https:&#x2F;&#x2F;minaszy.github.io&#x2F;index.html">
 <meta property="og:site_name" content="Minaszy&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
@@ -114,7 +114,7 @@
 
 
 
-  <link rel="canonical" href="http://localhost:4000/"/>
+  <link rel="canonical" href="https://minaszy.github.io/"/>
 
 
 
@@ -238,7 +238,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2019/11/09/ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x/">
+    <link itemprop="mainEntityOfPage" href="https://minaszy.github.io/2019/11/09/ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Minaszy">
@@ -321,13 +321,13 @@
 <h2 id="引入arcgis-api，创建地图"><a href="#引入arcgis-api，创建地图" class="headerlink" title="引入arcgis api，创建地图"></a>引入arcgis api，创建地图</h2><p>在html中创建地图div并设置好样式，在页面中通过esri-loader引用arcgis api的模块：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import &#123; loadModules &#125; from <span class="string">'esri-loader'</span>;</span><br><span class="line"></span><br><span class="line">loadModules([<span class="string">'esri/views/MapView'</span>, <span class="string">'esri/WebMap'</span>],&#123; css: <span class="literal">true</span> &#125;)</span><br><span class="line">  .<span class="keyword">then</span>(([MapView, WebMap]) =&gt; &#123;</span><br><span class="line">    var webmap = new WebMap(&#123;</span><br><span class="line">      portalItem: &#123;</span><br><span class="line">        id: <span class="string">'f2e9b762544945f390ca4ac3671cfa72'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    var view = new MapView(&#123;</span><br><span class="line">      map: webmap,</span><br><span class="line">      container: <span class="string">'viewDiv'</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(err =&gt; &#123;</span><br><span class="line">    console.error(err);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
 <p>默认情况下，esri-loader将从CDN上加载最新版的arcgis api，当然也可以从CDN上加载指定版本的api或者从自己的服务器上加载，通过setDefaultOptions或者loadModules时指定version参数/本地服务url。更详细的配置参考<a href="https://github.com/Esri/esri-loader#configuring-esri-loader" target="_blank" rel="noopener">esri-loader配置</a></p>
-<h2 id="本地部署arcgis-api-for-js"><a href="#本地部署arcgis-api-for-js" class="headerlink" title="本地部署arcgis api for js"></a>本地部署arcgis api for js</h2><p>去官网下载arcgis api<br><a href="https://developers.arcgis.com/downloads/apis-and-sdks?product=javascript" target="_blank" rel="noopener">下载地址：https://developers.arcgis.com/downloads/apis-and-sdks?product=javascript</a><br><img src="//localhost:4000/2019/11/09/ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x/api.jpg" width="60%"></p>
+<h2 id="本地部署arcgis-api-for-js"><a href="#本地部署arcgis-api-for-js" class="headerlink" title="本地部署arcgis api for js"></a>本地部署arcgis api for js</h2><p>去官网下载arcgis api<br><a href="https://developers.arcgis.com/downloads/apis-and-sdks?product=javascript" target="_blank" rel="noopener">下载地址：https://developers.arcgis.com/downloads/apis-and-sdks?product=javascript</a><br><img src="//minaszy.github.io/2019/11/09/ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x/api.jpg" width="60%"></p>
 <p>将下载好的api放在web服务器下，根据自己的服务器ip和端口修改arcgis api的init.js和dojo.js,在这两个文件里搜索[HOSTNAME_AND_PATH_TO_JSAPI]，将baseUrl的值替换为:<a href="http://www.example.com/arcgis_js_api/library/4.11/" target="_blank" rel="noopener">www.example.com/arcgis_js_api/library/4.11/</a></p>
 <p>将下载好的arcgis api中的4.x文件夹放到项目assets/lib目录下，修改arcgis api的init.js和dojo.js,在这两个文件里搜索[HOSTNAME_AND_PATH_TO_JSAPI]，将baseUrl的值替换为:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(location.protocol === <span class="string">'file:'</span> ? <span class="string">'http:'</span> : location.protocol) + <span class="string">'//'</span> + location.host + <span class="string">"/assets/lib/4.11/dojo"</span></span><br></pre></td></tr></table></figure>
 <p>然后通过setDefaultOptions或者loadModules时指定本地api服务url。</p>
-<h2 id="成果展示及代码分享"><a href="#成果展示及代码分享" class="headerlink" title="成果展示及代码分享"></a>成果展示及代码分享</h2><img src="//localhost:4000/2019/11/09/ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x/earth.jpg" width="20%">
-<img src="//localhost:4000/2019/11/09/ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x/3d.jpg" width="20%">
+<h2 id="成果展示及代码分享"><a href="#成果展示及代码分享" class="headerlink" title="成果展示及代码分享"></a>成果展示及代码分享</h2><img src="//minaszy.github.io/2019/11/09/ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x/earth.jpg" width="20%">
+<img src="//minaszy.github.io/2019/11/09/ionic4%E9%9B%86%E6%88%90arcgis-api-for-js-4-x/3d.jpg" width="20%">
 
 <h2 id="其他框架"><a href="#其他框架" class="headerlink" title="其他框架"></a>其他框架</h2><p>arcgis api for js与angular、ember、react、vue一起使用的方法参见<a href="https://developers.arcgis.com/javascript/latest/guide/using-frameworks/" target="_blank" rel="noopener">官网介绍</a></p>
 <h2 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h2><p>是否要安装npm install @types/arcgis-js-api –save，待述。</p>
@@ -379,7 +379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2019/11/02/mapbox-gl%E6%9C%AC%E5%9C%B0%E5%8C%96%E5%9B%BE%E6%A0%87%E5%92%8C%E5%AD%97%E4%BD%93/">
+    <link itemprop="mainEntityOfPage" href="https://minaszy.github.io/2019/11/02/mapbox-gl%E6%9C%AC%E5%9C%B0%E5%8C%96%E5%9B%BE%E6%A0%87%E5%92%8C%E5%AD%97%E4%BD%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Minaszy">
@@ -511,7 +511,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2019/11/01/mapboxgl%E5%8F%8C%E6%8C%87%E5%80%BE%E6%96%9C%E5%9C%B0%E5%9B%BE/">
+    <link itemprop="mainEntityOfPage" href="https://minaszy.github.io/2019/11/01/mapboxgl%E5%8F%8C%E6%8C%87%E5%80%BE%E6%96%9C%E5%9C%B0%E5%9B%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Minaszy">
@@ -586,7 +586,7 @@
 <h2 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h2><p>在web端，mapbox-gl的地图可以通过鼠标右键操作倾斜、旋转，但是在移动端需要通过触摸事件来操作，mapbox-gl在TouchZoomRotateHandler类中只加入了触摸平移、缩放、旋转事件，并没有地图倾斜事件；因此APP上的地图可以单指/双指拖动，双指缩放和旋转，但是不能像web端一样倾斜；</p>
 <h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p>修改mapbox-gl源码中的TouchZoomRotateHandler类，增加双指滑动倾斜地图效果。<br>监听touchstart时的地图pitch值和双指起始位置，touchmove时判断双指是否平行滑动，根据滑动的长度计算地图当前的倾斜度即pitch的值，调用设置地图倾斜度的方法setPitch实现想要的效果。<br>关键实现代码：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const Y0 = p0.y - this._startP0.y; //计算第一个手指滑动距离</span><br><span class="line">const Y1 = p1.y - this._startP1.y; //计算第二个手指滑动距离</span><br><span class="line">const b = (Y0 &lt;= 0 &amp;&amp; Y1 &lt;= 0 || Y0 &gt;= 0 &amp;&amp; Y1 &gt;= 0); //判断双指是否平行滑动</span><br><span class="line"><span class="keyword">if</span> (b) &#123;</span><br><span class="line">    const diff = (Y0 + Y1) / 2 * 0.5;</span><br><span class="line">    this._map.setPitch(this._startPitch + diff); //设置地图倾斜度</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="成果展示"><a href="#成果展示" class="headerlink" title="成果展示"></a>成果展示</h2><p>github:<a href="https://github.com/Minaszy/mapbox-gl-js.git" target="_blank" rel="noopener">https://github.com/Minaszy/mapbox-gl-js.git</a><br><img src="//localhost:4000/2019/11/01/mapboxgl%E5%8F%8C%E6%8C%87%E5%80%BE%E6%96%9C%E5%9C%B0%E5%9B%BE/001.jpg" width="50%"></p>
+<h2 id="成果展示"><a href="#成果展示" class="headerlink" title="成果展示"></a>成果展示</h2><p>github:<a href="https://github.com/Minaszy/mapbox-gl-js.git" target="_blank" rel="noopener">https://github.com/Minaszy/mapbox-gl-js.git</a><br><img src="//minaszy.github.io/2019/11/01/mapboxgl%E5%8F%8C%E6%8C%87%E5%80%BE%E6%96%9C%E5%9C%B0%E5%9B%BE/001.jpg" width="50%"></p>
 
           
         

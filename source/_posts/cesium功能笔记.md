@@ -73,7 +73,7 @@ categories: cesium
 
 
 
-## 图层服务专题
+## 图层管理专题
 cesium支持绘制和叠加多种服务提供的高分辨率影像，包括Cesium ion提供的服务。使用Cesium ion来流化策展的高分辨率影像或者将栅格数据切片成你自己的影像图层在cesium应用中使用。图层可以被排序和整合。每个图层的亮度、对比度、伽马、色相和饱和度都可以动态改变。本教程介绍影像图层的概念和相关的Cesium API。
 
 添加图层的方式：
@@ -94,12 +94,13 @@ new Cesium.UrlTemplateImageryProvider({
     url: 'http://map.geoq.cn/ArcGIS/rest/services/ChinaOnlineStreetPurplishBlue/MapServer/tile/{z}/{y}/{x}'
 })
 ```
-2. cesium初始化时会自动从Cesium ion添加Bing Maps Aerial imagery作为底图。修改初始化参数imageryProvider后，将会用新图层替换掉默认Bing Maps Aerial图层,因此imageryProvider可以用来设置和修改底图。当你还需要叠加其他图层时，可以通过viewer上的imageryLayers添加其他imageryProvider。
+2. 修改底图有两种方式，一是初始化viewer时设置imageryProvider参数；二是给viewer上的imageryLayers添加imageryProvider。如果没有设置imageryProvider，cesium初始化时会自动从Cesium ion添加Bing Maps Aerial imagery作为底图。修改初始化参数imageryProvider后，将会用新图层替换掉默认Bing Maps Aerial图层,因此imageryProvider可以用来设置和修改底图。当你还需要叠加其他图层时，可以通过viewer上的imageryLayers添加其他imageryProvider。
 
 3. imageryProvider imageryLayers ImageryLayerCollection addImageryProvider ImageryLayer概念
 imageryProvider是初始化viewer时的参数，参数类型要求是imageryProvider，用来发送瓦片请求的类；
-imageryLayers是viewer或者scene上的属性，用于存放图层组，参数类型是ImageryLayerCollection；
-ImageryLayerCollection可以通过addImageryProvider方法将单个的imageryProvider添加到数组中，添加完成后会返回一个ImageryLayer类，ImageryLayer类代表瓦片图层，可以设置这个图层的属性如颜色、透明度等；
+imageryLayers是viewer或者scene上的属性，用于存放图层组，类型是ImageryLayerCollection；
+addImageryProvider是ImageryLayerCollection上的方法，将单个的imageryProvider添加到数组中，添加完成后会返回一个ImageryLayer类；
+ImageryLayer类代表瓦片图层，可以设置这个图层的属性如颜色、透明度等；
 ```bash
 var layer = new ImageryLayer(imageryProvider);
 layers.add(layer);

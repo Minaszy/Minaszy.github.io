@@ -87,3 +87,26 @@ web scene不支持的图层类型
 It's important to note that GraphicsLayer, ImageryLayer and StreamLayer can't be saved to a web scene. A cached image service can be saved to a web scene, by declaring it as a TileLayer. An OpenStreetMapLayer can be saved as a baseLayer. For more information on types of layers that can be saved in a web scene, see the web scene specification.
 
 sceneview 和 webscene的区别
+
+
+### 水面升降功能
+
+水面模型：
+服务的形式：
+1. featureLayer上render设置水面效果，首先需要发布一个面的featureserver；
+2. 把水面制作成多面体模型，发布成服务（可编辑的三位服务），然后加载；
+模型文件的形式：
+3. 将水面模型转为gltf格式，客户端创建graphic，加载水面模型；
+客户端：
+4. 在客户端创建一个featureLayer，渲染水面效果，其他同1；
+
+模型升降思路：
+1. 之前做的无人船轨迹播放，通过set空间数据的geometry，即时修改了位置，换成修改z值，应该也可以实现z轴上的平滑移动；
+2. 在编辑3d服务的例子里，选中三位服务的某个模型后，出现编辑工具，可以操作平滑的拖动模型上下移动；但是必须是使用api提供的工具，代码里找不到暴露的操作接口；不知道他这里的移动是什么样的思路。。。
+3. 在可编辑三维服务里，有暴露编辑事件，通过编辑方法更新要素的z值，可以实现移动；已经测试成功，可以移动模型高度，但是请求更新需要时间，出现停顿，这种方案适用于一步到位的更新操作，如设置一定高度值，不适用于平滑移动的需求；
+
+#### 最终解决方案：
+即时改变图层的elevationInfo可以实现想要的效果，注意：
+1. 是要给图层的elevationInfo重新赋值，直接改变elevationInfo里的offset是不行的；
+2. 重新赋值的内容是自定义要素高度featureExpressionInfo，有这个参数时会代替Z值取显示模型的高度；
+balloonLayer.elevationInfo = currentElevationInfo;

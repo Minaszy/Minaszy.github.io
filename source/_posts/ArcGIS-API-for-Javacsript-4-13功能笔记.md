@@ -81,6 +81,9 @@ There are two types of web scenes: global or local. Global scenes render the ear
 6. 河道点击高亮功能，通过点击事件查询要素服务重新叠加高亮要素实现；
 7. 点击要素弹窗功能；
 8. 开启、关闭地下模式；
+this.map.ground.navigationConstraint = {
+          type: "none"
+        };
 
 
 web scene不支持的图层类型
@@ -109,4 +112,5 @@ sceneview 和 webscene的区别
 即时改变图层的elevationInfo可以实现想要的效果，注意：
 1. 是要给图层的elevationInfo重新赋值，直接改变elevationInfo里的offset是不行的；
 2. 重新赋值的内容是自定义要素高度featureExpressionInfo，有这个参数时会代替Z值取显示模型的高度；
+3. 只有featureserver的polygon面渲染成的水面才能通过上面的办法，达到平滑升降的效果；
 balloonLayer.elevationInfo = currentElevationInfo;
